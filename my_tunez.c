@@ -61,6 +61,41 @@ struct song_node * remove_node(struct song_node *front, char *n, char *a){
   return front;
 
 }
+
+  struct song_node * find_node(struct song_node *front, char *n, char *a){
+  if(front -> next == NULL || front == NULL){
+    return front;
+  }
+
+  if(strcmp(front -> next ->name, n) == 0 && strcmp(front -> next -> artist, a) == 0){
+    struct song_node *ans = front -> next;
+    return ans;
+  }
+
+  else{
+    front = find_node(front -> next, n, a);
+  }
+
+  return front;
+
+}
+
+   struct song_node * find_first(struct song_node *front, char *a){
+  if(front -> next == NULL || front == NULL){
+    return front;
+  }
+
+  if(strcmp(front -> next -> artist, a) == 0){
+    struct song_node *ans = front -> next;
+    return ans -> name;
+  }
+
+  else{
+    front = find_first(front -> next, a);
+  }
+  return front;
+
+}
     
     
 int main(){
