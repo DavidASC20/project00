@@ -98,7 +98,3 @@ struct song_node ** clear_library(struct song_node ** library){
     }
     return library;
 }
-
-int main(){
-   return 0;
-}
