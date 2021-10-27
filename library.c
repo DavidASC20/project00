@@ -85,11 +85,13 @@ struct song_node ** clear_library(struct song_node ** library){
 
 
 void shuffle(struct song_node ** library){
+  srand(time(NULL));
   int num = 3;
   int index;
   struct song_node * sn;
 
   while(num--){
+    sn = NULL;
     index = rand() %27;
     while ((sn = random_song(library[index])) == NULL){
       index = rand() %27;
