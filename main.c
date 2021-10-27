@@ -164,7 +164,7 @@ int main(){
     printf("Before Shuffle");
     print_library(library);
     printf("\nAfter Shuffle\n");
-    print_shuffle(library);
+    shuffle(library);
     printf("\n===============\n");
 
 

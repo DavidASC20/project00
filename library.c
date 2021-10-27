@@ -84,21 +84,15 @@ struct song_node ** clear_library(struct song_node ** library){
 }
 
 
-void print_shuffle(struct song_node ** library){
-    int i = 0;
-    struct song_node * node = 0;
-    while (i < 2) {
-        int index = (rand() % 27);
-        struct song_node * temp = random_song(library[index]);
-        if(temp && !find_node(node,temp->artist, temp->name)){
-            node = insert_front(node, temp->artist, temp->name);
-            i++;
-        }
-    }
-    while (node){
-        struct song_node * temp = node;
-        print_nodes(temp);
-        node = node->next;
-        free(temp);
-    }
+void shuffle(struct song_node ** library){
+  int num = 3;
+  int index;
+  struct song_node * sn;
+
+  while(num--){
+    index = rand() %27;
+    while ((sn = random_song(library[index])) == NULL) index = rand() %27;
+    print_nodes(sn);
+    printf("\n");
+  }
 }

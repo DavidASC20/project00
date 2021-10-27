@@ -14,7 +14,7 @@ void print_artist(struct song_node ** library, char * a);
 
 void print_library(struct song_node ** library);
 
-void print_shuffle(struct song_node ** library);
+void shuffle(struct song_node ** library);
 
 struct song_node ** delete_song(struct song_node ** library, char * a, char * n);
 
