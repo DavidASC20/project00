@@ -73,9 +73,101 @@ int main(){
     print_list(front);
     printf("\n===============\n");
 
+
+
+
+
+
+
+
+
+
     printf("Library Tests \n\n");
     printf("\n===============\n");
+    struct song_node **library = make_library();
+    struct song_node * a1 = insert_front(0, "thunderstruck", "ac/dc");
+    struct song_node * a2 = insert_front(0, "alive", "pearl jam");
+    struct song_node * a3 = insert_front(0, "even flow", "pearl jam");
+    struct song_node * a4 = insert_front(0, "yellow ledbetter", "pearl jam");
+    struct song_node * a5 = insert_front(0, "time", "pink floyd");
+    struct song_node * a6 = insert_front(0, "peaches", "presidents of the united states of america");
+    struct song_node * a7 = insert_front(0, "street spirit (fade out)", "radiohead");
+    struct song_node * a8 = insert_front(0,  "paranoid android", "radiohead");
 
-    printf("\nTesting print_letter\n");
+    printf("\nTesting print_letter: \n");
+    print_letter(library, 'p');
     printf("\n===============\n");
+
+    printf("\nTesting print_library: \n");
+    print_library(library);
+    printf("\n===============\n");
+
+    add_list(library, a1);
+    add_list(library, a2);
+    add_list(library, a3);
+    add_list(library, a4);
+    add_list(library, a5);
+    add_list(library, a6);
+    add_list(library, a7);
+    add_list(library, a8);
+
+
+    printf("\nTesting print_letter: \n");
+    print_letter(library, 'p');
+    printf("\n===============\n");
+
+
+    printf("\nTesting print_library: \n");
+    print_library(library);
+    printf("\n===============\n");
+
+    printf("\nTesting search_song\n");
+    print_nodes(search_song(library, "alive", "pearl jam"));
+    printf("\n===============\n");
+
+    printf("\nTesting search_song\n");
+    print_nodes(search_song(library, "bruh moment", "silento"));
+    printf("\n===============\n");
+
+    printf("\nTesting find artist\n");
+    print_list(search_artist(library, "pearl jam"));
+    printf("\n===============\n");
+
+    printf("\nTesting find artist\n");
+    print_list(search_artist(library, "pink floyd"));
+    printf("\n===============\n");
+
+    printf("\nTesting remove song\n");
+    printf("\nBefore\n");
+    print_library(library);
+    delete_song(library, "alive", "pearl jam");
+    printf("\nAfter\n");
+    print_library(library);
+    printf("\n===============\n");
+   
+    printf("\nTesting clear library\n");
+    clear_library(library);
+    print_library(library);
+    printf("\n===============\n");
+
+    printf("\nTesting clear library\n");
+    clear_library(library);
+    print_library(library);
+    printf("\n===============\n");
+
+    add_list(library, a1);
+    add_list(library, a2);
+    add_list(library, a3);
+    add_list(library, a4);
+
+    printf("\nTesting shuffle, added songs again\n");
+    printf("Before Shuffle");
+    print_library(library);
+    printf("\nAfter Shuffle\n");
+    print_shuffle(library);
+    printf("\n===============\n");
+
+
+   
+    
 }

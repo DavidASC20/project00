@@ -6,13 +6,13 @@
 #include "my_tunez.h"
 #include "library.h"
 
-struct song_node ** create_library() {
+struct song_node ** make_library() {
   struct song_node ** library = calloc(27, sizeof(struct song_node *));
   return library;
 }
 
-struct song_node ** add_song(struct song_node ** library, struct song_node * sn){
-    library[library_index(sn->artist)] = insert_alphabetical(library[library_index(sn->artist)], sn->artist, sn->name);
+struct song_node ** add_list(struct song_node ** library, struct song_node * sn){
+    library[library_index(sn->artist)] = insert_alphabetical(library[library_index(sn->artist)], sn->name, sn->artist);
     return library;
 }
 
@@ -24,8 +24,9 @@ int library_index(char *a) {
     }
 }
 
-struct song_node * search_song(struct song_node ** library, char * a, char * n){
-    return (find_node(library[library_index(a)], a, n));
+struct song_node * search_song(struct song_node ** library, char * n, char * a){
+    return (find_node(library[library_index(a)], n, a));
+    
 }
 
 struct song_node * search_artist(struct song_node ** library, char * a){
@@ -66,10 +67,27 @@ void print_library(struct song_node ** library){
     }
 }
 
+
+
+struct song_node ** delete_song(struct song_node ** library, char * n, char * a){
+    library[library_index(a)] = remove_node(library[library_index(a)], n, a);
+    return library;
+}
+
+struct song_node ** clear_library(struct song_node ** library){
+    int i = 0;
+    while(i < 27){
+        library[i] = free_list(library[i]);
+        i++;
+    }
+    return library;
+}
+
+
 void print_shuffle(struct song_node ** library){
     int i = 0;
     struct song_node * node = 0;
-    while (i < 3) {
+    while (i < 2) {
         int index = (rand() % 27);
         struct song_node * temp = random_song(library[index]);
         if(temp && !find_node(node,temp->artist, temp->name)){
@@ -83,18 +101,4 @@ void print_shuffle(struct song_node ** library){
         node = node->next;
         free(temp);
     }
-}
-
-struct song_node ** delete_song(struct song_node ** library, char * a, char * n){
-    library[library_index(a)] = remove_node(library[library_index(a)], a, n);
-    return library;
-}
-
-struct song_node ** clear_library(struct song_node ** library){
-    int i = 0;
-    while(i < 27){
-        library[i] = free_list(library[i]);
-        i++;
-    }
-    return library;
 }
