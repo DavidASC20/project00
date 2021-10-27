@@ -91,7 +91,9 @@ void shuffle(struct song_node ** library){
 
   while(num--){
     index = rand() %27;
-    while ((sn = random_song(library[index])) == NULL) index = rand() %27;
+    while ((sn = random_song(library[index])) == NULL){
+      index = rand() %27;
+    }
     print_nodes(sn);
     printf("\n");
   }

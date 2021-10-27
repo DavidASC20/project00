@@ -116,6 +116,7 @@ struct song_node * remove_node(struct song_node *front, char *n, char *a){
 }
     
 struct song_node * random_song(struct song_node *sn){
+	if (sn == NULL) return NULL;
   srand(time(NULL));
   int size = list_len(sn);
 

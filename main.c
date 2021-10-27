@@ -150,11 +150,6 @@ int main(){
     print_library(library);
     printf("\n===============\n");
 
-    printf("\nTesting clear library\n");
-    clear_library(library);
-    print_library(library);
-    printf("\n===============\n");
-
     add_list(library, a1);
     add_list(library, a2);
     add_list(library, a3);
