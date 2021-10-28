@@ -117,17 +117,16 @@ struct song_node * remove_node(struct song_node *front, char *n, char *a){
     
 struct song_node * random_song(struct song_node *sn){
 	if (sn == NULL) return NULL;
-  srand(time(NULL));
-  int size = list_len(sn);
-
-  int rand_num = rand() % size;
-
-  int i = 0;
-  while(i < rand_num) {
+  struct song_node *front = sn;
+  int len = 0;
+  while(sn != NULL){
+    len++;
     sn = sn -> next;
-    i +=1;
   }
-  return sn;
+  int index = rand() % len;
+  while(index -- > 0){
+    front = front -> next;
+  }return front;
 }
 
 
