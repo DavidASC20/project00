@@ -17,10 +17,10 @@ struct song_node ** add_list(struct song_node ** library, struct song_node * sn)
 }
 
 int library_index(char *a) {
-    if (!isalpha(a[0])){
-      return 0;
-    } else{
+    if (isalpha(a[0])){
       return ((int) tolower(a[0])) - 96; 
+    } else{
+      return 0; 
     }
 }
 
